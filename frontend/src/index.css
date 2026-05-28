@@ -1,48 +1,46 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: hsl(0 0% 100%);
-  --color-foreground: hsl(222.2 84% 4.9%);
+  --font-sans: "Outfit", system-ui, -apple-system, sans-serif;
 
-  --color-primary: hsl(221.2 83.2% 53.3%);
-  --color-primary-foreground: hsl(210 40% 98%);
-
-  --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(222.2 84% 4.9%);
-
-  --color-border: hsl(214.3 31.8% 91.4%);
+  --color-background: hsl(210, 40%, 98%);
+  --color-foreground: hsl(222.2, 84%, 4.9%);
+  
+  --color-primary: hsl(217.2, 91.2%, 59.8%);
+  --color-primary-foreground: hsl(210, 40%, 98%);
+  
+  --color-card: hsla(0, 0%, 100%, 0.7);
+  --color-card-foreground: hsl(222.2, 84%, 4.9%);
+  
+  --color-border: hsla(214.3, 31.8%, 91.4%, 0.4);
 }
 
 @layer base {
   :root {
-    --background: hsl(0 0% 100%);
-    --foreground: hsl(222.2 84% 4.9%);
-    --border: hsl(214.3 31.8% 91.4%);
+    --background: hsl(210, 40%, 98%);
+    --foreground: hsl(222.2, 84%, 4.9%);
+    --border: hsla(214.3, 31.8%, 91.4%, 0.4);
   }
   
   .dark {
-    --color-background: hsl(222.2 84% 4.9%);
-    --color-foreground: hsl(210 40% 98%);
+    --color-background: hsl(222.2, 84%, 4.9%);
+    --color-foreground: hsl(210, 40%, 98%);
 
-    --color-primary: hsl(217.2 91.2% 59.8%);
-    --color-primary-foreground: hsl(222.2 47.4% 11.2%);
+    --color-primary: hsl(217.2, 91.2%, 59.8%);
+    --color-primary-foreground: hsl(222.2, 47.4%, 11.2%);
 
-    --color-card: hsl(222.2 84% 4.9%);
-    --color-card-foreground: hsl(210 40% 98%);
+    --color-card: hsla(222.2, 84%, 4.9%, 0.5);
+    --color-card-foreground: hsl(210, 40%, 98%);
 
-    --color-border: hsl(217.2 32.6% 17.5%);
+    --color-border: hsla(217.2, 32.6%, 17.5%, 0.5);
     
-    --background: hsl(222.2 84% 4.9%);
-    --foreground: hsl(210 40% 98%);
-    --border: hsl(217.2 32.6% 17.5%);
+    --background: hsl(222.2, 84%, 4.9%);
+    --foreground: hsl(210, 40%, 98%);
+    --border: hsla(217.2, 32.6%, 17.5%, 0.5);
   }
 
   * {
     border-color: var(--color-border);
-  }
-  
-  button {
-    cursor: pointer;
   }
   
   body {
@@ -53,14 +51,44 @@
     transition-timing-function: ease-in-out;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-sans);
+    /* Dynamic moving gradient background */
+    background: linear-gradient(135deg, var(--color-background) 0%, color-mix(in srgb, var(--color-primary) 10%, var(--color-background)) 100%);
+    background-attachment: fixed;
   }
 }
 
 .glass-panel {
-  background-color: color-mix(in srgb, var(--color-card) 80%, transparent);
-  backdrop-filter: blur(12px);
+  background: var(--color-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--color-border);
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  border-radius: 0.75rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.glass-panel:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.dark .glass-panel {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dark .glass-panel:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.glass-input {
+  background: color-mix(in srgb, var(--color-card) 50%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 30%, transparent);
 }

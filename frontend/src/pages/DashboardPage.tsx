@@ -58,9 +58,9 @@ const DashboardPage = () => {
         </div>
         <button
           onClick={() => handleOpenModal()}
-          className="bg-primary text-primary-foreground px-5 py-2.5 rounded-xl font-semibold hover:bg-primary/90 transition-all shadow-sm hover:shadow flex items-center gap-2"
+          className="bg-gradient-to-r from-primary to-blue-500 text-primary-foreground px-6 py-3 rounded-xl font-bold hover:opacity-90 transition-all shadow-lg hover:shadow-xl flex items-center gap-2 transform hover:-translate-y-0.5"
         >
-          <Plus size={20} />
+          <Plus size={20} className="stroke-[3]" />
           New Task
         </button>
       </div>

@@ -16,9 +16,7 @@ const generateToken = (res: Response, userId: string) => {
   return token;
 };
 
-// @desc    Register a new user
-// @route   POST /api/auth/register
-// @access  Public
+// Register a new user
 export const registerUser = async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
 
@@ -51,9 +49,7 @@ export const registerUser = async (req: Request, res: Response) => {
   }
 };
 
-// @desc    Auth user & get token
-// @route   POST /api/auth/login
-// @access  Public
+// Authenticate user & get token
 export const loginUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
@@ -74,9 +70,7 @@ export const loginUser = async (req: Request, res: Response) => {
   }
 };
 
-// @desc    Logout user / clear cookie
-// @route   POST /api/auth/logout
-// @access  Public
+// Logout user & clear cookie
 export const logoutUser = (req: Request, res: Response) => {
   res.cookie('jwt', '', {
     httpOnly: true,
@@ -87,9 +81,7 @@ export const logoutUser = (req: Request, res: Response) => {
   res.status(200).json({ message: 'Logged out successfully' });
 };
 
-// @desc    Get user profile
-// @route   GET /api/auth/me
-// @access  Private
+// Get user profile
 export const getUserProfile = async (req: any, res: Response) => {
   const user = await User.findById(req.user._id);
 

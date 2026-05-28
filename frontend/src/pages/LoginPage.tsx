@@ -57,8 +57,8 @@ const Login = () => {
           <input
             type="email"
             {...register('email')}
-            className={`w-full p-3 rounded-lg border bg-background focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all ${
-              errors.email ? 'border-red-500' : 'border-border'
+            className={`w-full p-3.5 rounded-xl glass-input outline-none ${
+              errors.email ? 'border-red-500' : ''
             }`}
             placeholder="you@example.com"
           />
@@ -70,8 +70,8 @@ const Login = () => {
           <input
             type="password"
             {...register('password')}
-            className={`w-full p-3 rounded-lg border bg-background focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all ${
-              errors.password ? 'border-red-500' : 'border-border'
+            className={`w-full p-3.5 rounded-xl glass-input outline-none ${
+              errors.password ? 'border-red-500' : ''
             }`}
             placeholder="••••••••"
           />
@@ -81,7 +81,7 @@ const Login = () => {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-primary text-primary-foreground p-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors flex justify-center items-center gap-2"
+          className="w-full bg-gradient-to-r from-primary to-blue-500 text-primary-foreground p-3.5 rounded-xl font-bold hover:shadow-lg hover:opacity-90 transition-all flex justify-center items-center gap-2"
         >
           {isLoading ? <Loader2 className="animate-spin" /> : 'Sign In'}
         </button>

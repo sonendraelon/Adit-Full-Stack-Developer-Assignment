@@ -20,40 +20,40 @@ const Navbar = ({ toggleDarkMode, isDarkMode }: NavbarProps) => {
   };
 
   return (
-    <nav className="border-b bg-card">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2 text-xl font-bold text-primary">
-          <CheckSquare size={28} />
+    <nav className="sticky top-0 z-50 px-4 py-4 backdrop-blur-md">
+      <div className="container mx-auto px-6 py-4 flex justify-between items-center glass-panel shadow-lg rounded-2xl">
+        <Link to="/" className="flex items-center gap-2 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500">
+          <CheckSquare size={32} className="text-primary" />
           <span>TaskMaster</span>
         </Link>
         <div className="flex items-center gap-6">
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="p-2.5 rounded-full hover:bg-gray-100/50 dark:hover:bg-gray-800/50 transition-all shadow-sm border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
           >
             {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
           {user ? (
             <div className="flex items-center gap-4">
-              <span className="text-sm font-medium hidden sm:block">Hello, {user.name}</span>
+              <span className="text-sm font-medium hidden sm:block tracking-wide">Hello, {user.name}</span>
               <button
                 onClick={handleLogout}
-                className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
+                className="px-5 py-2.5 bg-primary/90 text-primary-foreground rounded-xl hover:bg-primary hover:shadow-lg transition-all text-sm font-semibold"
               >
                 Logout
               </button>
             </div>
           ) : (
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <Link
                 to="/login"
-                className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors"
+                className="px-5 py-2.5 text-sm font-semibold hover:text-primary transition-colors"
               >
                 Login
               </Link>
               <Link
                 to="/register"
-                className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
+                className="px-5 py-2.5 bg-primary/90 text-primary-foreground rounded-xl hover:bg-primary hover:shadow-lg transition-all text-sm font-semibold"
               >
                 Sign Up
               </Link>

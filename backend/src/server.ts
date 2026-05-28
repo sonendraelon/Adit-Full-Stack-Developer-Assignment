@@ -44,11 +44,6 @@ const swaggerOptions = {
       version: '1.0.0',
       description: 'API documentation for the Task Management Application',
     },
-    servers: [
-      {
-        url: 'http://localhost:5000',
-      },
-    ],
     components: {
       securitySchemes: {
         bearerAuth: {

@@ -2,9 +2,7 @@ import { Response } from 'express';
 import Task from '../models/Task';
 import { AuthRequest } from '../middleware/authMiddleware';
 
-// @desc    Get all tasks for user (or all if admin)
-// @route   GET /api/tasks
-// @access  Private
+// Get all tasks for user (or all if admin)
 export const getTasks = async (req: AuthRequest, res: Response) => {
   const pageSize = Number(req.query.limit) || 10;
   const page = Number(req.query.page) || 1;
@@ -35,9 +33,7 @@ export const getTasks = async (req: AuthRequest, res: Response) => {
   res.json({ tasks, page, pages: Math.ceil(count / pageSize), total: count });
 };
 
-// @desc    Create a task
-// @route   POST /api/tasks
-// @access  Private
+// Create a new task
 export const createTask = async (req: AuthRequest, res: Response) => {
   const { title, description, priority, dueDate } = req.body;
 
@@ -54,9 +50,7 @@ export const createTask = async (req: AuthRequest, res: Response) => {
   res.status(201).json(populatedTask);
 };
 
-// @desc    Update a task (title, desc, priority, dueDate)
-// @route   PUT /api/tasks/:id
-// @access  Private
+// Update task details
 export const updateTask = async (req: AuthRequest, res: Response) => {
   const { title, description, priority, dueDate } = req.body;
 
@@ -82,9 +76,7 @@ export const updateTask = async (req: AuthRequest, res: Response) => {
   }
 };
 
-// @desc    Toggle task completed status
-// @route   PATCH /api/tasks/:id
-// @access  Private
+// Toggle task completion status
 export const toggleComplete = async (req: AuthRequest, res: Response) => {
   const task = await Task.findById(req.params.id);
 
@@ -105,9 +97,7 @@ export const toggleComplete = async (req: AuthRequest, res: Response) => {
   }
 };
 
-// @desc    Delete a task
-// @route   DELETE /api/tasks/:id
-// @access  Private
+// Delete task
 export const deleteTask = async (req: AuthRequest, res: Response) => {
   const task = await Task.findById(req.params.id);
 

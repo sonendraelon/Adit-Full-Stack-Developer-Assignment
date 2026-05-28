@@ -69,8 +69,8 @@ const TaskForm = ({ isOpen, onClose, onSubmit, isLoading, initialData }: TaskFor
             <input
               type="text"
               {...register('title')}
-              className={`w-full p-3 rounded-lg border bg-background focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all ${
-                errors.title ? 'border-red-500' : 'border-border'
+              className={`w-full p-3.5 rounded-xl glass-input outline-none ${
+                errors.title ? 'border-red-500' : ''
               }`}
               placeholder="Task title"
               autoFocus
@@ -83,7 +83,7 @@ const TaskForm = ({ isOpen, onClose, onSubmit, isLoading, initialData }: TaskFor
             <textarea
               {...register('description')}
               rows={3}
-              className="w-full p-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"
+              className="w-full p-3.5 rounded-xl glass-input outline-none resize-none"
               placeholder="Task description (optional)"
             />
           </div>
@@ -93,7 +93,7 @@ const TaskForm = ({ isOpen, onClose, onSubmit, isLoading, initialData }: TaskFor
               <label className="block text-sm font-medium mb-1">Priority</label>
               <select
                 {...register('priority')}
-                className="w-full p-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all appearance-none"
+                className="w-full p-3.5 rounded-xl glass-input outline-none appearance-none"
               >
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
@@ -105,7 +105,7 @@ const TaskForm = ({ isOpen, onClose, onSubmit, isLoading, initialData }: TaskFor
               <input
                 type="date"
                 {...register('dueDate')}
-                className="w-full p-3 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+                className="w-full p-3.5 rounded-xl glass-input outline-none"
               />
             </div>
           </div>
@@ -121,7 +121,7 @@ const TaskForm = ({ isOpen, onClose, onSubmit, isLoading, initialData }: TaskFor
             <button
               type="submit"
               disabled={isLoading}
-              className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors flex justify-center items-center gap-2 min-w-[100px]"
+              className="bg-gradient-to-r from-primary to-blue-500 text-primary-foreground px-6 py-2.5 rounded-xl font-bold hover:shadow-lg hover:opacity-90 transition-all flex justify-center items-center gap-2 min-w-[120px]"
             >
               {isLoading ? <Loader2 className="animate-spin" size={18} /> : initialData ? 'Update Task' : 'Add Task'}
             </button>
