@@ -3,7 +3,7 @@
 A full-stack task management web application built with React and Node.js. It allows users to register, log in, and manage their tasks efficiently.
 
 ## Deployed Links
-- **Frontend (Vercel):** [https://adit-full-stack-developer-assignment.vercel.app](https://adit-full-stack-developer-assignment.vercel.app)
+- **Frontend (Vercel):** [https://adit-full-stack-developer-assignment.vercel.app](https://adit-full-stack-developer-assignmen.vercel.app)
 - **Backend (Render):** [https://task-manager-backend.onrender.com](https://task-manager-backend.onrender.com) (assuming generic render link based on deployment)
 
 ## Features Included (Bonus Points Covered)
