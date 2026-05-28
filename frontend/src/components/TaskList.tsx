@@ -29,9 +29,9 @@ const TaskList = ({ tasks, isLoading, onEdit, isAdmin }: TaskListProps) => {
   }
 
   return (
-    <div className="glass-panel overflow-x-auto">
-      <table className="w-full text-left border-collapse">
-        <thead className="bg-gray-50 dark:bg-gray-800/50 sticky top-0 z-10 border-b border-border">
+    <div className="glass-panel overflow-x-auto w-full rounded-2xl">
+      <table className="w-full text-left border-collapse min-w-[700px]">
+        <thead className="bg-gray-50/80 dark:bg-gray-800/80 backdrop-blur-md sticky top-0 z-20 border-b border-border">
           <tr>
             <th className="p-4 font-semibold text-gray-600 dark:text-gray-300 w-12 text-center">Status</th>
             <th className="p-4 font-semibold text-gray-600 dark:text-gray-300">Task Details</th>

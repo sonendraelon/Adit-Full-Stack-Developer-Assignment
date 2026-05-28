@@ -46,13 +46,13 @@ const TaskItem = memo(({ task, onEdit }: TaskItemProps) => {
       : 'bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300 border-orange-200';
   };
 
-  // Row background color (completed row in green, pending in yellow)
+  // Row background color
   const rowClass = task.completed 
-    ? 'bg-green-50/50 dark:bg-green-900/10 hover:bg-green-100/50' 
-    : 'bg-yellow-50/50 dark:bg-yellow-900/10 hover:bg-yellow-100/50';
+    ? 'bg-green-50/10 dark:bg-green-900/5' 
+    : 'bg-orange-50/10 dark:bg-orange-900/5';
 
   return (
-    <tr className={`border-b transition-colors ${rowClass}`}>
+    <tr className={`border-b transition-all duration-300 ${rowClass} hover:bg-white/60 dark:hover:bg-white/10 hover:backdrop-blur-xl hover:shadow-[0_4px_30px_rgba(0,0,0,0.1)] relative z-0 hover:z-10`}>
       <td className="p-4 align-top">
         <button 
           onClick={handleToggleStatus}

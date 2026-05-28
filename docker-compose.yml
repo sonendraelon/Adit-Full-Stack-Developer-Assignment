@@ -31,9 +31,13 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=https://task-manager-backend.onrender.com/api
     container_name: task-manager-frontend
     ports:
-      - "3000:80"
+      - "80:80"
+    environment:
+      - VITE_API_URL=https://task-manager-backend.onrender.com/api
     depends_on:
       - backend
     networks:

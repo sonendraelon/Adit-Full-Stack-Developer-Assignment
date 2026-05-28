@@ -1,140 +1,74 @@
-# TaskMaster Pro
+# Task Management Web Application
 
-![TaskMaster Pro Banner](https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&q=80&w=2000&h=600)
+A full-stack task management web application built with React and Node.js. It allows users to register, log in, and manage their tasks efficiently.
 
-> A premium, full-stack Task Management Web Application engineered with precision. Featuring a stunning liquid glassmorphism UI, robust role-based JWT authentication, and a lightning-fast React + Node.js architecture.
+## Deployed Links
+- **Frontend (Vercel):** [https://adit-full-stack-developer-assignment.vercel.app](https://adit-full-stack-developer-assignment.vercel.app)
+- **Backend (Render):** [https://task-manager-backend.onrender.com](https://task-manager-backend.onrender.com) (assuming generic render link based on deployment)
 
-## 🚀 Live Deployment
+## Features Included (Bonus Points Covered)
+- **Docker Setup:** `docker-compose.yml` and `Dockerfile` are configured for the full stack.
+- **Role-based Access:** Differentiates between normal users and admins.
+- **Pagination & Search:** Implemented in the backend APIs and connected to the frontend UI.
+- **Unit Testing:** Basic unit tests implemented with Jest in the backend.
+- **Deployment:** Deployed on Vercel and Render.
+- **Dark Mode UI:** Fully supported dark and light modes.
+- **Swagger API Documentation:** Available at `/api-docs` on the backend.
 
-- **Live Application:** [TaskMaster Pro on Vercel](https://adit-full-stack-developer-assignment.vercel.app/)
+## Tech Stack
+- **Frontend:** React, TypeScript, Tailwind CSS, Vite, Redux Toolkit
+- **Backend:** Node.js, Express, TypeScript, MongoDB, Mongoose, JWT authentication
 
-## ✨ Key Features & Evaluations Covered
+## API Reference
+Protected routes require a `Bearer` token in the `Authorization` header.
 
-- **Apple-Inspired Glassmorphism UI:** Stunning, responsive front-end leveraging advanced CSS backdrop filters and dynamic gradients for a premium feel.
-- **Robust JWT Authentication:** Secure login & registration with encrypted passwords (bcrypt) and protected API routes.
-- **Role-Based Access Control:** Differentiates between normal users (can only see/manage their tasks) and Admins (can view/manage all tasks).
-- **Pagination & Search:** Optimized backend queries to fetch tasks with full pagination support and case-insensitive search logic.
-- **Dark & Light Mode UI:** Seamless theme switching with fluid CSS transitions.
-- **Docker Ready:** Complete `Dockerfile` and `docker-compose.yml` configurations provided for both frontend and backend orchestration.
-- **Swagger Documentation:** API is fully documented and testable via Swagger UI.
-- **Clean Architecture:** Environment variables handle all configuration—zero hardcoded localhosts. Unnecessary comments stripped for purely logic-defining code structure.
+| Method | Endpoint           | Auth Required | Description |
+| :---   | :---               | :---          | :--- |
+| POST   | `/api/auth/register` | No | Register a new user |
+| POST   | `/api/auth/login`    | No | Login and get JWT token |
+| GET    | `/api/tasks`         | Yes | Get tasks (with pagination & search) |
+| POST   | `/api/tasks`         | Yes | Create a new task |
+| PUT    | `/api/tasks/:id`     | Yes | Update task details |
+| PATCH  | `/api/tasks/:id`     | Yes | Toggle complete/pending status |
+| DELETE | `/api/tasks/:id`     | Yes | Delete a task |
 
-## 🛠 Tech Stack
+## Folder Structure
+```
+backend/
+  src/
+    config/      # DB connection
+    controllers/ # Auth & Task logic
+    middleware/  # JWT & Error handlers
+    models/      # Mongoose schemas
+    routes/      # Express routes
+    __tests__/   # Unit tests
+  Dockerfile
+  docker-compose.yml
+  package.json
 
-### Frontend
-- **React.js 18** with **Vite**
-- **TypeScript**
-- **Tailwind CSS v4** (Custom glassmorphism theme)
-- **Redux Toolkit** (State Management)
-- **React Hook Form** + **Zod** (Validation)
-- **Axios** (API Client)
-
-### Backend
-- **Node.js** & **Express.js**
-- **TypeScript**
-- **MongoDB** with **Mongoose**
-- **JWT** (JSON Web Tokens)
-- **bcryptjs** (Password Hashing)
-- **Swagger UI Express**
-
-## 📂 Folder Structure
-
-```text
-📦 taskmaster-pro
-├── 📁 backend
-│   ├── 📁 src
-│   │   ├── 📁 config        # Database configuration
-│   │   ├── 📁 controllers   # Auth & Task controller logic
-│   │   ├── 📁 middleware    # JWT Auth & Error handlers
-│   │   ├── 📁 models        # Mongoose Schemas
-│   │   ├── 📁 routes        # API Route definitions
-│   │   └── 📄 server.ts     # Express server & Swagger setup
-│   ├── 📄 Dockerfile
-│   └── 📄 package.json
-└── 📁 frontend
-    ├── 📁 src
-    │   ├── 📁 assets        # Static assets
-    │   ├── 📁 components    # Reusable UI components
-    │   ├── 📁 pages         # View pages (Login, Dashboard, etc.)
-    │   ├── 📁 services      # Axios instance setup
-    │   ├── 📁 store         # Redux Toolkit slices & store
-    │   ├── 📄 App.tsx       # Main router & theme provider
-    │   └── 📄 index.css     # Global Tailwind & Glassmorphism styles
-    ├── 📄 Dockerfile
-    ├── 📄 tailwind.config.js
-    └── 📄 vite.config.ts
+frontend/
+  src/
+    components/  # UI components
+    pages/       # Pages like Login, Dashboard
+    services/    # Axios configuration
+    store/       # Redux state management
+  Dockerfile
+  package.json
 ```
 
-## 🔗 API Reference
+## Setup Instructions
 
-All protected routes require a valid JWT `Bearer` token in the `Authorization` header.
+**Backend:**
+1. Navigate to the `backend` folder: `cd backend`
+2. Install dependencies: `npm install`
+3. Set up the `.env` file with `PORT`, `MONGO_URI`, and `JWT_SECRET`.
+4. Run the server: `npm run dev`
 
-| Method   | Endpoint           | Auth Required? | Description                          |
-| -------- | ------------------ | -------------- | ------------------------------------ |
-| `POST`   | `/api/auth/register` | No             | Register a new user                  |
-| `POST`   | `/api/auth/login`    | No             | Login and receive JWT token          |
-| `GET`    | `/api/auth/me`       | Yes            | Get current user profile             |
-| `GET`    | `/api/tasks`         | Yes            | Get paginated, filtered tasks        |
-| `POST`   | `/api/tasks`         | Yes            | Create a new task                    |
-| `PUT`    | `/api/tasks/:id`     | Yes            | Update a task (title, desc, priority)|
-| `PATCH`  | `/api/tasks/:id`     | Yes            | Toggle task completion status        |
-| `DELETE` | `/api/tasks/:id`     | Yes            | Delete a task                        |
+**Frontend:**
+1. Navigate to the `frontend` folder: `cd frontend`
+2. Install dependencies: `npm install`
+3. Set up `.env` with `VITE_API_URL` pointing to the backend.
+4. Run the app: `npm run dev`
 
-*Detailed interactive documentation is available locally via Swagger at `/api-docs`.*
-
-## ⚙️ Local Setup Instructions
-
-**Prerequisites:** Node.js v18+, MongoDB, and (Optional) Docker.
-
-### 1. Clone the repository
-```bash
-git clone <your-repo-link>
-cd <repo-name>
-```
-
-### 2. Backend Setup
-```bash
-cd backend
-npm install
-```
-Create a `.env` file in the `backend/` directory:
-```env
-PORT=5000
-MONGO_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/task-manager
-JWT_SECRET=your_super_secret_jwt_key
-NODE_ENV=development
-CLIENT_URLS=http://localhost:5173
-```
-Start the backend server:
-```bash
-npm run dev
-```
-
-### 3. Frontend Setup
-```bash
-cd ../frontend
-npm install
-```
-Create a `.env` file in the `frontend/` directory:
-```env
-VITE_API_URL=http://localhost:5000/api
-```
-Start the frontend dev server:
-```bash
-npm run dev
-```
-
-### 4. Running via Docker Compose
-To spin up both services quickly:
-```bash
-docker-compose up --build
-```
-
-## 🧠 Assumptions Made
-- The deployment platform (Vercel/Render) handles routing the `/api` requests or injecting the correct `VITE_API_URL` environment variables.
-- User email addresses must be unique.
-- Passwords must be at least 6 characters long.
-- Role-based access expects users with `role: "admin"` to be manually configured or seeded into the database to view all global tasks.
-
----
-*Built to showcase clean architecture, optimized logics, and a top 1% premium user interface.*
+**Docker:**
+Run `docker-compose up --build` from the root directory to start both the frontend and backend together.
