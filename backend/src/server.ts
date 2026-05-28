@@ -15,12 +15,19 @@ connectDB();
 
 const app = express();
 
-const corsOrigins = (process.env.CLIENT_URLS || 'http://localhost:3000,http://localhost:5173')
+const clientUrls = process.env.CLIENT_URLS || process.env.CLIENT_URL || 'http://localhost:3000,http://localhost:5173,https://adit-full-stack-developer-assignment.vercel.app';
+const corsOrigins = clientUrls
   .split(',')
   .map((origin) => origin.trim());
 
 app.use(cors({
-  origin: corsOrigins,
+  origin: function (origin, callback) {
+    if (!origin || corsOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 
