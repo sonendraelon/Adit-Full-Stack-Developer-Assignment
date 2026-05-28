@@ -10,7 +10,7 @@ import { Plus, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const DashboardPage = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { tasks, isLoading, page, pages, total } = useSelector((state: RootState) => state.tasks);
+  const { tasks, isLoading, pages, total } = useSelector((state: RootState) => state.tasks);
   const { user } = useSelector((state: RootState) => state.auth);
 
   const [isModalOpen, setIsModalOpen] = useState(false);

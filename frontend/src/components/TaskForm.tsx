@@ -8,7 +8,7 @@ import type { Task } from '../store/slices/taskSlice';
 const taskSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   description: z.string().optional(),
-  priority: z.enum(['Low', 'Medium', 'High']).default('Medium'),
+  priority: z.enum(['Low', 'Medium', 'High']),
   dueDate: z.string().optional(),
 });
 

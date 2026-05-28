@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { Trash2, Edit2, CheckCircle2, Circle } from 'lucide-react';
 import { toggleTaskComplete, deleteTask } from '../store/slices/taskSlice';
 import type { Task } from '../store/slices/taskSlice';
