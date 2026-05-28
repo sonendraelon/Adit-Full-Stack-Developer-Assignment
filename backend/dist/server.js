@@ -16,11 +16,19 @@ const taskRoutes_1 = __importDefault(require("./routes/taskRoutes"));
 dotenv_1.default.config();
 (0, db_1.default)();
 const app = (0, express_1.default)();
-const corsOrigins = (process.env.CLIENT_URLS || 'http://localhost:3000,http://localhost:5173')
+const clientUrls = process.env.CLIENT_URLS || process.env.CLIENT_URL || 'adit-full-stack-developer-assignment.vercel.app';
+const corsOrigins = clientUrls
     .split(',')
     .map((origin) => origin.trim());
 app.use((0, cors_1.default)({
-    origin: corsOrigins,
+    origin: function (origin, callback) {
+        if (!origin || corsOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+            callback(null, true);
+        }
+        else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true
 }));
 app.use(express_1.default.json());
