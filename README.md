@@ -7,7 +7,6 @@ A full-stack task management web application built with React and Node.js. It al
 - **Backend (Render):** [https://task-manager-backend.onrender.com](https://adit-full-stack-developer-assignment.onrender.com/)
 ## Features Included (Bonus Points Covered)
 - **Docker Setup:** `docker-compose.yml` and `Dockerfile` are configured for the full stack.
-- **Role-based Access:** Differentiates between normal users and admins.
 - **Pagination & Search:** Implemented in the backend APIs and connected to the frontend UI.
 - **Unit Testing:** Basic unit tests implemented with Jest in the backend.
 - **Deployment:** Deployed on Vercel and Render.
