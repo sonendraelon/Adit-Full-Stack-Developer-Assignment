@@ -15,7 +15,7 @@ connectDB();
 
 const app = express();
 
-const clientUrls = process.env.CLIENT_URLS || process.env.CLIENT_URL || 'http://localhost:3000,http://localhost:5173,https://adit-full-stack-developer-assignment.vercel.app';
+const clientUrls = process.env.CLIENT_URLS || process.env.CLIENT_URL || 'adit-full-stack-developer-assignment.vercel.app';
 const corsOrigins = clientUrls
   .split(',')
   .map((origin) => origin.trim());
