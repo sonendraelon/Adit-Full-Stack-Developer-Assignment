@@ -12,6 +12,6 @@ router.route('/')
     .post(authMiddleware_1.protect, taskController_1.createTask);
 router.route('/:id')
     .put(authMiddleware_1.protect, taskController_1.updateTask)
-    .patch(authMiddleware_1.protect, taskController_1.toggleTaskStatus)
+    .patch(authMiddleware_1.protect, taskController_1.toggleComplete)
     .delete(authMiddleware_1.protect, taskController_1.deleteTask);
 exports.default = router;

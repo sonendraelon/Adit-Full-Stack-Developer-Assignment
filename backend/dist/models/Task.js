@@ -35,7 +35,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const taskSchema = new mongoose_1.Schema({
-    user: {
+    userId: {
         type: mongoose_1.Schema.Types.ObjectId,
         required: true,
         ref: 'User',
@@ -47,18 +47,20 @@ const taskSchema = new mongoose_1.Schema({
     description: {
         type: String,
         required: false,
-        default: '',
+    },
+    completed: {
+        type: Boolean,
+        default: false,
     },
     priority: {
         type: String,
         enum: ['Low', 'Medium', 'High'],
         default: 'Medium',
     },
-    status: {
-        type: String,
-        enum: ['pending', 'completed'],
-        default: 'pending',
-    },
+    dueDate: {
+        type: Date,
+        required: false,
+    }
 }, {
     timestamps: true,
 });

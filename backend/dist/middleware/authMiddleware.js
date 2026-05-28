@@ -17,8 +17,14 @@ const protect = async (req, res, next) => {
     if (token) {
         try {
             const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET || 'secret');
-            req.user = (await User_1.default.findById(decoded.id).select('-password'));
-            next();
+            const userDoc = await User_1.default.findById(decoded.id).select('-password');
+            if (userDoc) {
+                req.user = Object.assign(userDoc, { userId: decoded.id });
+                next();
+            }
+            else {
+                res.status(401).json({ message: 'User not found' });
+            }
         }
         catch (error) {
             console.error(error);
